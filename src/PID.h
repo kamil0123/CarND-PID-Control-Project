@@ -41,6 +41,11 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+
+  /*
+  * parameter optimization with Twiddle (coordinate ascent) algorithm
+  */
+  void Twiddle();
 };
 
 #endif /* PID_H */

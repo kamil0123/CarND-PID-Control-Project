@@ -32,3 +32,5 @@ double PID::TotalError() {
   return totalError;
 }
 
+void PID::Twiddle() {}
+

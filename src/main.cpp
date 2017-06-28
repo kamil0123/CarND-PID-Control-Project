@@ -60,7 +60,7 @@ int main()
           */
 
           pid.UpdateError(cte);
-          steer_value = -pid.Kp*pid.p_error - pid.Kd*pid.d_error - pid.Ki*pid.i_error;
+          steer_value = pid.TotalError;
 
           if (steer_value < -1.0) {
             steer_value = -1.0;
