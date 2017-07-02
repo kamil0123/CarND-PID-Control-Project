@@ -5,7 +5,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 ## Reflections
 
-### P, I, D components 
+### Describe the effect each of the P, I, D components had in your implementation.
 
 #### P
 The P ("proportional") component has proportional effect to the current value of crosstrack error (CTE).
@@ -19,6 +19,20 @@ Increasing of Ki coefficient gives less bias, but if it'll be too big it can cau
 #### D
 The D ("differential") component neutralize the P component's tendency to overshooting.
 With good Kd coefficient car goes to center line smoothy. However, when Kp is too big, car may not react in enought time on turns.
+
+### Describe how the final hyperparameters were chosen.
+
+I tuned parameteres manually. First I had plan to optimize them with twiddle algorithm, but then I realized that it will take a lot of  time, and manually choosen values gives better than expected results. 
+
+1. I started with values, which were showed as example during course, Kp=0.2, Ki=0.004, Kd=3.0.
+With this values car goes the whole lap, but it goes out the track for few seconds on sharp turns.
+2. To find beter values I assumed I will change all values to zero, and will be tunig each paramater seperatlly.
+3. Starting with Kp, I first check results with value 0.2, then compare it with 0.1 and 0.3. During all atemps car is going on almost straight road and it's tryng to go perfectly center by taking little turns from left to right, but overshooting is increasing (it makes bigger and bigger turns) and finally goes out the track. 
+0.1 has the best results. Overshooting is increasing slower then with other two. Now I try Kp=0.15. Overshooting is just a little bigger than with 0.1, but I believe it will be better during turns. I choose Kp=0.15. 
+4. With Kp=0.15, now I'm going to tune Ki. I try 0.004, than compare it with 0.002, 0.001, 0.00075. The car looks all the time more unstable than with Ki=0. The smaller value I choose it looks more stable. I don't want to take it too low, I'm choosing 0.00075 and I'm going to next parameter.
+5. Now I have Kp=0.15, Ki=0.00075 and Kd=0. It's time to find the best Kd. I start with 3.0. Now car is starting to go well. It goes smoothly, but have problems during turns - it goes off the road. That means I need to get lower Kd. I try to find value with which car will drive calmly, but will react correctly on turns. I think Kd=1.0 gives good results.
+6. My final results are Kp=0.15, Ki=0.00075, Kd=1.0.
+
 
 ## Dependencies
 
