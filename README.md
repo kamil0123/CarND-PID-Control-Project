@@ -3,6 +3,23 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Reflections
+
+### P, I, D components 
+
+#### P
+The P ("proportional") component has proportional effect to the current value of crosstrack error (CTE).
+With increase of Kp coefficient, car more rapidly is going back to the center of road. However, overshooting is also increasing.
+If it's too low, the control action may be too small when responding to sharp turns of road.
+
+#### I
+The I ("integral") component is proportional to both the magnitude of the error and the duration of the error (sum of all CTE). It removes systematic bias.
+Increasing of Ki coefficient gives less bias, but if it'll be too big it can cause instability. 
+
+#### D
+The D ("differential") component neutralize the P component's tendency to overshooting.
+With good Kd coefficient car goes to center line smoothy. However, when Kp is too big, car may not react in enought time on turns.
+
 ## Dependencies
 
 * cmake >= 3.5
