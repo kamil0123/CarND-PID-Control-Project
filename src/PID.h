@@ -42,10 +42,6 @@ public:
   */
   double TotalError();
 
-  /*
-  * parameter optimization with Twiddle (coordinate ascent) algorithm
-  */
-  void Twiddle();
 };
 
 #endif /* PID_H */
